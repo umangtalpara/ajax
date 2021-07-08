@@ -1,0 +1,37 @@
+$("tbody").on("click",".btn-delete",function(){
+    console.log("delete button clicked");
+    let id = $(this).attr("data-sid");
+    // console.log(id);
+  if(id=9 ){
+    mydata = {sid:id};
+    $.ajax({
+        url:"delete.php",
+        method: "POST",
+        data: JSON.stringify(mydata),
+         error: function (data) { 
+            if ( settings.url == "ajax/missing.html" ) {
+                $( "div.log" ).text( "Triggered ajaxError handler." );
+              }
+        }
+    });
+  }else{
+    mydata = {sid:id};
+    $.ajax({
+        url:"delete.php",
+        method: "POST",
+        data: JSON.stringify(mydata),
+        success: function(data){
+            // console.log(data);
+            showdata()
+            msg ="<div class='alert alert-dark mt-3'>" + data + "</div>";
+            $("#msg").html(msg);
+        }
+        
+    });
+  };
+});
+
+
+
+
+if($id=4)
