@@ -33,6 +33,8 @@ $("#submit").click(function(e){
     console.log("submit button clicked");
     let nm = $("#name").val();
     let mn = $("#number").val();
+    // console.log(nm);
+    // console.log(mn);
 
     mydata = { name:nm, number:mn };
     // console.log(mydata);
@@ -58,6 +60,7 @@ $("tbody").on("click",".btn-delete",function(){
     // console.log(id);
     mydata = {sid:id};
     $.ajax({
+        // url:"delete.php",
         url: (id == 1) ? "dete.php" : "delete.php",
         method: "POST",
         data: JSON.stringify(mydata),
@@ -77,7 +80,9 @@ $("tbody").on("click",".btn-status",function(){
     console.log("status button clicked");
     let st = $(this).attr("data-status");
     let id = $(this).attr("data-sid");
+    // console.log(st);
     mydata = {sid:id , status:st};
+    // console.log(mydata);
     $.ajax({
         url:"status.php",
         method: "POST",

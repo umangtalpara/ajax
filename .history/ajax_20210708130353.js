@@ -77,7 +77,9 @@ $("tbody").on("click",".btn-status",function(){
     console.log("status button clicked");
     let st = $(this).attr("data-status");
     let id = $(this).attr("data-sid");
+    // console.log(st);
     mydata = {sid:id , status:st};
+    // console.log(mydata);
     $.ajax({
         url:"status.php",
         method: "POST",
