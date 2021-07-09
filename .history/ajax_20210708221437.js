@@ -62,10 +62,10 @@ $("tbody").on("click",".btn-delete",function(){
         data: JSON.stringify(mydata),
         success: function(data){
             if(data == "info delete Successfully"){
-                msgdelete ="<div class='alert alert-success  mt-3'>" + data + "</div>";
+                msgdelete ="<div class='alert  mt-3'>" + data + "</div>";
                 $("#msg").html(msgdelete).css("color", "green");
             }else{
-                msgdelete ="<div class='alert alert-danger  mt-3'>" + data + "</div>";
+                msgdelete ="<div class='alert  mt-3'>" + data + "</div>";
                 $("#msg").html(msgdelete).css("color", "red");
             };
             showdata();
@@ -80,7 +80,7 @@ $("tbody").on("click",".btn-status",function(){
     console.log("status button clicked");
     let st = $(this).attr("data-status");
     let id = $(this).attr("data-sid");
-    // console.log(id);
+    console.log(id);
     mydata = {sid:id , status:st};
     $.ajax({
         url:"status.php",

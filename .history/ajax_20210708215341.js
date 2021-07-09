@@ -60,15 +60,17 @@ $("tbody").on("click",".btn-delete",function(){
         url: (id == 1) ? "dete.php" : "delete.php",
         method: "POST",
         data: JSON.stringify(mydata),
+        alert(data);
         success: function(data){
-            if(data == "info delete Successfully"){
-                msgdelete ="<div class='alert alert-success  mt-3'>" + data + "</div>";
-                $("#msg").html(msgdelete).css("color", "green");
+            showdata()
+            if(data == info delete Successfully){
+                msg ="<div class='alert alert-dark mt-3'>" + data + "</div>";
+                $("#msg").html(msg).css("color", "red");
             }else{
-                msgdelete ="<div class='alert alert-danger  mt-3'>" + data + "</div>";
-                $("#msg").html(msgdelete).css("color", "red");
+                msg ="<div class='alert alert-dark mt-3'>" + data + "</div>";
+                $("#msg").html(msg).css("color", "red");
             };
-            showdata();
+           
         },error: function () { 
             $('#msg').append('Error: [id:1 is  default] '  );
         }
@@ -80,7 +82,6 @@ $("tbody").on("click",".btn-status",function(){
     console.log("status button clicked");
     let st = $(this).attr("data-status");
     let id = $(this).attr("data-sid");
-    // console.log(id);
     mydata = {sid:id , status:st};
     $.ajax({
         url:"status.php",

@@ -18,12 +18,12 @@ $sid = $mydata['sid'];
 // }
 
 
-if(!empty($sid)) {
-    if($sid == 41 ){
-            echo "info this deafult";
+if(!empty($id)) {
+    if($id== 17 ){
+            echo "info not Successfully";
         }
     else{
-        $sql = "DELETE FROM info WHERE id = {$sid}";
+     $sql = "DELETE FROM info WHERE id = {$id}";
         if($conn->query($sql) == TRUE){
             echo "info delete Successfully";
         }else{

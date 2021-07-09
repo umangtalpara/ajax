@@ -19,8 +19,8 @@ function showdata(){
             }
             $("#tbody").html(output);
         },
-        error: function (errorMessage) { 
-            $('#msg').append('Error: ' +errorMessage );
+        // error: function (errorMessage) { 
+        //     $('#msg').append('Error: ' +errorMessage );
         }
     });
 }
@@ -41,9 +41,9 @@ $("#submit").click(function(e){
         data: JSON.stringify(mydata),
         success: function(data){
             // console.log(data);
-            msg ="<div class='alert alert-dark mt-3'>" + data + "</div>";
-            $("#msg").html(msg);
-            $('#form')[0].reset();
+            // msg ="<div class='alert alert-dark mt-3'>" + data + "</div>";
+            // $("#msg").html(msg);
+            // $('#form')[0].reset();
             showdata()
         },
     });
@@ -62,13 +62,12 @@ $("tbody").on("click",".btn-delete",function(){
         data: JSON.stringify(mydata),
         success: function(data){
             if(data == "info delete Successfully"){
-                msgdelete ="<div class='alert alert-success  mt-3'>" + data + "</div>";
-                $("#msg").html(msgdelete).css("color", "green");
+                // msgdelete ="<div class='alert  mt-3'>" + data + "</div>";
+                // $("#msg").html(msgdelete).css("color", "red");
             }else{
-                msgdelete ="<div class='alert alert-danger  mt-3'>" + data + "</div>";
-                $("#msg").html(msgdelete).css("color", "red");
+                // msg ="<div class='alert  mt-3'>" + data + "</div>";
+                // $("#msg").html(msgdelete).css("color", "green");
             };
-            showdata();
         },error: function () { 
             $('#msg').append('Error: [id:1 is  default] '  );
         }
@@ -80,20 +79,19 @@ $("tbody").on("click",".btn-status",function(){
     console.log("status button clicked");
     let st = $(this).attr("data-status");
     let id = $(this).attr("data-sid");
-    // console.log(id);
     mydata = {sid:id , status:st};
     $.ajax({
         url:"status.php",
         method: "POST",
         data: JSON.stringify(mydata),
-        success: function(data){
-            // console.log(data);
-            msg ="<div class='alert alert-dark mt-3'>" + data + "</div>";
-            $("#msg").html(msg);
-        },
-        error: function (errorMessage) { 
-            $('#msg').append('Error: ' +errorMessage );
-        }
+        // success: function(data){
+        //     // console.log(data);
+        //     msg ="<div class='alert alert-dark mt-3'>" + data + "</div>";
+        //     $("#msg").html(msg);
+        // },
+        // error: function (errorMessage) { 
+        //     $('#msg').append('Error: ' +errorMessage );
+        // }
     });
 });
 

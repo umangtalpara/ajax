@@ -18,8 +18,8 @@ $sid = $mydata['sid'];
 // }
 
 
-if(!empty($sid)) {
-    if($sid == 41 ){
+if(!empty($ $sql = "DELETE FROM info WHERE id = {$sid}";id)) {
+    if($id == 41 ){
             echo "info this deafult";
         }
     else{

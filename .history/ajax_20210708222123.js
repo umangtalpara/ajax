@@ -61,7 +61,7 @@ $("tbody").on("click",".btn-delete",function(){
         method: "POST",
         data: JSON.stringify(mydata),
         success: function(data){
-            if(data == "info delete Successfully"){
+            if(data == "info delete  Successfully"){
                 msgdelete ="<div class='alert alert-success  mt-3'>" + data + "</div>";
                 $("#msg").html(msgdelete).css("color", "green");
             }else{

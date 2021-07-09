@@ -8,7 +8,7 @@ function showdata(){
         method: "GET",
         dataType:'json',
         success:function(data){
-            // console.log(data);
+            console.log(data);
             if (data) {
                 x = data;
             }else {
@@ -18,6 +18,7 @@ function showdata(){
                 output += "<tr><td>" + x[i].id + "</td><td>" + x[i].name + " </td><td> " + x[i].number + " </td><td> <button class=' btn-sm btn-status' data-sid=" + x[i].id+ " data-status=" + x[i].status+ " > " + x[i].status+ " </button> </td><td> <button class='btn btn-danger btn-sm btn-delete' data-sid=" + x[i].id+ " >delete</button></td></tr> " 
             }
             $("#tbody").html(output);
+            
         },
         error: function (errorMessage) { 
             $('#msg').append('Error: ' +errorMessage );
@@ -32,6 +33,7 @@ $("#submit").click(function(e){
     console.log("submit button clicked");
     let nm = $("#name").val();
     let mn = $("#number").val();
+
     mydata = { name:nm, number:mn };
     // console.log(mydata);
 
@@ -53,22 +55,19 @@ $("#submit").click(function(e){
 $("tbody").on("click",".btn-delete",function(){
     console.log("delete button clicked");
     let id = $(this).attr("data-sid");
-    // console.log(id);
+    console.log(id);
     mydata = {sid:id};
-    // console.log(id);
+    console.log(mydata);
     $.ajax({
         url: (id == 1) ? "dete.php" : "delete.php",
         method: "POST",
         data: JSON.stringify(mydata),
+        alert(data);
         success: function(data){
-            if(data == "info delete Successfully"){
-                msgdelete ="<div class='alert alert-success  mt-3'>" + data + "</div>";
-                $("#msg").html(msgdelete).css("color", "green");
-            }else{
-                msgdelete ="<div class='alert alert-danger  mt-3'>" + data + "</div>";
-                $("#msg").html(msgdelete).css("color", "red");
-            };
-            showdata();
+            
+            showdata()
+            msg ="<div class='alert alert-dark mt-3'>" + data + "</div>";
+            $("#msg").html(msg);
         },error: function () { 
             $('#msg').append('Error: [id:1 is  default] '  );
         }
@@ -80,7 +79,7 @@ $("tbody").on("click",".btn-status",function(){
     console.log("status button clicked");
     let st = $(this).attr("data-status");
     let id = $(this).attr("data-sid");
-    // console.log(id);
+    // alert(id);
     mydata = {sid:id , status:st};
     $.ajax({
         url:"status.php",
@@ -88,6 +87,7 @@ $("tbody").on("click",".btn-status",function(){
         data: JSON.stringify(mydata),
         success: function(data){
             // console.log(data);
+            showdata()
             msg ="<div class='alert alert-dark mt-3'>" + data + "</div>";
             $("#msg").html(msg);
         },
